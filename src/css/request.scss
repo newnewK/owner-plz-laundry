@@ -1,0 +1,437 @@
+@import "./../util";
+// 요청처리 서브 컴포넌트 (component > request > 컴포넌트)
+
+// 입점 신청 Application
+.application-wrap {
+  @include main-wrap;
+
+  .title {
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+
+  .explanation {
+    color: $sub-font-color;
+    margin-top: 10px;
+    li {
+      padding: 5px 0;
+    }
+  }
+
+  .form-wrap {
+    max-width: 400px;
+    margin-top: 20px;
+
+    .field {
+      position: relative;
+      margin-bottom: 40px;
+
+      .field {
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        font-size: 1.062rem;
+
+        &.required {
+          position: relative;
+          display: inline-block;
+
+          &:after {
+            content: "*";
+            position: absolute;
+            right: -10px;
+            top: -1px;
+            color: $required-color;
+          }
+        }
+      }
+
+      .description {
+        font-size: 0.832rem;
+        color: rgba($sub-font-color, 0.5);
+        display: block;
+        text-transform: uppercase;
+        margin-top: 8px;
+        line-height: 1.3;
+      }
+
+      .bizN-info {
+        background-color: #e6eaed;
+        display: inline-flex;
+        margin: 20px 8px 8px 0;
+        border-radius: 15px;
+        padding: 8px 10px;
+        line-height: 1.33;
+        color: #212529;
+        font-size: 12px;
+        font-weight: 500;
+
+        svg {
+          width: 15px;
+          margin-right: 8px;
+        }
+
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 100px;
+        }
+
+        button {
+          background: transparent;
+          margin-left: 10px;
+          border: 0;
+          cursor: pointer;
+          padding: 0;
+          width: 10px;
+          height: 14px;
+
+          .icon {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+
+      .thumb-wrap {
+        @include flex;
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        padding: 20px 0;
+        position: relative;
+        margin-top: 15px;
+
+        .thumb-img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background-color: #ddd;
+          background-size: cover;
+        }
+
+        button {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          padding: 0;
+          width: 40px;
+          height: 40px;
+          background: transparent;
+
+          i {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      input {
+        margin-top: 15px;
+
+        &[type="text"],
+        &[type="email"],
+        &[type="tel"] {
+          @include form_input;
+        }
+
+        &[type="file"] {
+          display: none;
+        }
+      }
+
+      .file-btn {
+        @include btn-gray;
+
+        i {
+          margin-right: 5px;
+        }
+
+        svg {
+          fill: #fff;
+          height: 13px;
+          margin-right: 5px;
+        }
+      }
+
+      .flex-field {
+        @include flex($just: space-between);
+
+        button {
+          background: transparent;
+          color: $main-color;
+          font-size: 0.832rem;
+
+          &.open-btn {
+            padding: 5px 12px;
+            border-radius: 50px;
+            border: 1px solid $main-color;
+          }
+
+          &.cor-btn {
+            text-decoration: underline;
+          }
+        }
+
+        .upload {
+          padding: 5px 12px;
+          border-radius: 50px;
+          border: 1px solid $main-color;
+          font-size: 0.832rem;
+          color: $main-color;
+          cursor: pointer;
+
+          input {
+            display: none;
+          }
+        }
+      }
+
+      .checked-list {
+        background-color: #f9fafb;
+        padding: 20px 10px;
+        color: $sub-font-color;
+        font-size: 0.875rem;
+        margin-top: 15px;
+
+        span {
+          color: $main-color;
+        }
+      }
+
+      .modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($black-color, 0.5);
+        z-index: 5;
+
+        .modal-inner {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 500px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-sizing: border-box;
+          padding: 40px;
+
+          h2 {
+            font-size: 1.562rem;
+            font-weight: 700;
+          }
+
+          p {
+            font-size: 0.937rem;
+            color: $sub-font-color;
+            padding-top: 10px;
+            line-height: 1.4;
+          }
+
+          input {
+            font-weight: normal;
+          }
+
+          .price {
+            position: relative;
+
+            input {
+              padding-right: 45px;
+            }
+
+            .kr {
+              position: absolute;
+              right: 0;
+              top: 10px;
+              padding: 0 15px;
+              height: 48px;
+              line-height: 48px;
+              font-size: 1.062rem;
+            }
+          }
+
+          .btn-wrap {
+            @include flex($just: space-between);
+            width: 100%;
+
+            button {
+              width: calc(100% - 5px);
+              height: 45px;
+              border-radius: 3px;
+              font-size: 1.062rem;
+              font-weight: 500;
+              letter-spacing: 1px;
+              transition: 0.25s ease;
+
+              &.reset {
+                margin-right: 10px;
+                border: 1px solid rgba($black-color, 0.1);
+                background-color: #fff;
+                color: $sub-font-color;
+
+                &:hover {
+                  border-color: rgba($black-color, 0.3);
+                  color: rgba($font-color, 0.75);
+                }
+              }
+
+              &.sumbit {
+                @include submitBtn;
+
+                &:hover {
+                  background: $dark-main-color;
+                }
+              }
+            }
+          }
+        }
+
+        .close-modal {
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          background: transparent;
+          height: 40px;
+          width: 40px;
+
+          i {
+            width: 20px;
+          }
+        }
+
+        &.category-modal {
+          .category-form {
+            padding: 20px 0;
+
+            input {
+              display: none;
+
+              &:checked + label {
+                border-color: $main-color;
+                color: $main-color;
+                svg {
+                  fill: $main-color;
+                }
+              }
+            }
+
+            label {
+              @include flex($just: space-between);
+              border: 1px solid $border-color;
+              border-radius: 3px;
+              padding: 0 20px;
+              height: 60px;
+              line-height: 60px;
+              margin-bottom: 10px;
+              cursor: pointer;
+              color: $sub-font-color;
+
+              .checked-icon {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: rgba($sub-font-color, 0.2);
+              }
+
+              svg {
+                height: 18px;
+                fill: rgba($sub-font-color, 0.2);
+              }
+            }
+          }
+        }
+
+        &.carry-modal {
+          .carry-form {
+            margin: 40px 0 60px;
+
+            label {
+              margin-top: 20px;
+            }
+
+            input {
+              margin-top: 10px;
+            }
+          }
+        }
+
+        &.dlvy-modal {
+          //   display: none;
+
+          .dlvy-form {
+            margin: 40px 0 60px;
+
+            label {
+              margin-top: 20px;
+            }
+
+            input {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      .radio-wrap {
+        @include radio;
+      }
+
+      .carry-list,
+      .dlvy-list {
+        li {
+          border: 1px solid #dadce0;
+          width: 320px;
+          padding: 20px 20px;
+          box-sizing: border-box;
+          box-shadow: 0 15px 15px -10px rgba(0, 0, 0, 0.1);
+          margin-top: 15px;
+
+          .info {
+            @include flex($just: space-between);
+            font-size: 0.875rem;
+            padding-bottom: 15px;
+
+            span {
+              color: $sub-font-color;
+            }
+          }
+
+          .btn-group {
+            @include flex($just: flex-end);
+            margin-top: 15px;
+
+            button {
+              border: 1px solid rgba(0, 0, 0, 0.15);
+              background: transparent;
+              padding: 5px 12px;
+              border-radius: 20px;
+              color: $sub-font-color;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+
+      em,
+      .pwWng {
+        display: none;
+      }
+
+      &.wngField {
+        @include wngField;
+      }
+    }
+
+    .sumbit-btn {
+      @include submitBtn;
+      width: 320px;
+    }
+  }
+}
+
+// 정보수정

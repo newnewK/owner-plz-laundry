@@ -1,0 +1,96 @@
+@import "./../util";
+
+.header {
+  position: fixed;
+  left: 15px;
+  top: 15px;
+  width: 200px;
+  height: calc(100vh - 30px);
+  background-color: $font-color;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  border-radius: 15px;
+
+  .logo {
+    height: 32px;
+
+    a {
+      display: block;
+      height: inherit;
+      cursor: pointer;
+
+      svg {
+        fill: #fff;
+        height: 28px;
+      }
+    }
+  }
+
+  nav {
+    margin-top: 30px;
+    .navigation {
+      & > li {
+        a {
+          @include flex($just: flex-start);
+          color: rgba(255, 255, 255, 0.55);
+          font-size: 0.875rem;
+          padding: 10px 0;
+
+          i {
+            opacity: 0.55;
+            margin-right: 8px;
+          }
+        }
+
+        .title {
+          background-color: transparent;
+          @include flex($just: space-between);
+          color: rgba(255, 255, 255, 0.55);
+          font-size: 0.937rem;
+          padding: 10px 0;
+          width: 100%;
+
+          i {
+            opacity: 0.55;
+            margin-right: 8px;
+
+            &.ty2 {
+              transform: translateY(2px);
+            }
+          }
+        }
+
+        .depth2 {
+          transition: height 0.25s ease;
+          transition: 0.35s ease;
+          overflow-y: auto;
+
+          &.close {
+            height: 0;
+          }
+
+          &.open {
+            height: 100%;
+
+            &.open_depth2 {
+              height: 68px;
+            }
+          }
+          li {
+            padding-left: 22px;
+
+            &.active {
+              background-color: $main-color;
+              border-radius: 3px;
+            }
+            a {
+              color: #fff;
+              font-size: 0.875rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

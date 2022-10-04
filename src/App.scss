@@ -1,0 +1,64 @@
+@import "./util";
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", "Pretendard", sans-serif;
+  overflow-x: hidden;
+  font-size: 0.937rem;
+  color: $font-color;
+
+  .sebu-wrap {
+    background: #f2f2f2;
+  }
+}
+
+// 로그인 전 헤더
+.sign-in-header {
+  @include flex($just: space-between);
+  padding: 0 80px;
+  height: 56px;
+  border-bottom: 1px solid $border-color;
+
+  .logo {
+    height: 30px;
+    a {
+      height: inherit;
+      img {
+        height: inherit;
+      }
+    }
+  }
+
+  nav {
+    a {
+      margin-left: 15px;
+      display: inline-block;
+      font-size: 0.937rem;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    @include flex;
+    border-bottom: none;
+    nav {
+      display: none;
+    }
+  }
+}
+
+//main
+main {
+  width: calc(100vw - 245px);
+  height: calc(100vh - 30px);
+  background: #fff;
+  position: fixed;
+  left: 230px;
+  top: 15px;
+  border-radius: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: $shadow-color;
+  overflow-y: auto;
+}
