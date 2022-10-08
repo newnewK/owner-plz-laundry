@@ -4,6 +4,34 @@
   @include main-wrap;
 }
 
+// store 내부 공통
+.timer {
+  @include flex($just: flex-start);
+  margin-top: 15px;
+
+  label {
+    color: $sub-font-color;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-right: 20px;
+  }
+
+  .select-wrap {
+    @include select-wrap;
+    margin-right: 10px;
+    flex: 1;
+
+    &.mr0 {
+      margin-right: 0;
+    }
+  }
+}
+.all-day {
+  font-size: 0.875rem;
+  color: $sub-font-color;
+  margin-top: 15px;
+}
+
 // 영업임시중지
 .temporary-wrap {
   .title {
@@ -33,28 +61,6 @@
       input {
         margin-top: 15px;
         @include form_input;
-      }
-
-      .timer {
-        @include flex($just: flex-start);
-        margin-top: 15px;
-
-        label {
-          color: $sub-font-color;
-          font-weight: 500;
-          font-size: 0.875rem;
-          margin-right: 20px;
-        }
-
-        .select-wrap {
-          @include select-wrap;
-          margin-right: 10px;
-          flex: 1;
-
-          &.mr0 {
-            margin-right: 0;
-          }
-        }
       }
     }
 
@@ -184,7 +190,7 @@
 .tab-info {
   @include flex($just: space-between, $align: flex-start);
   .container {
-    width: calc(100% - 500px);
+    width: 400px;
 
     .field {
       margin-bottom: 20px;
@@ -196,19 +202,39 @@
         margin-bottom: 15px;
 
         button {
-          background-color: transparent;
-          border-radius: 15px;
-          padding: 4px 15px;
-          font-size: 0.812rem;
-          border: 1px solid $main-color;
-          color: $main-color;
+          // background-color: transparent;
+          // border-radius: 15px;
+          // padding: 4px 15px;
+          // font-size: 0.812rem;
+          // border: 1px solid $main-color;
+          // color: $main-color;
+          padding: 8px 20px;
+          letter-spacing: 1px;
+
+          &.cor-btn {
+            display: flex;
+            color: $main-color;
+            background-color: transparent;
+            font-size: 0.812rem;
+            font-weight: 600;
+
+            i {
+              margin-right: 2px;
+            }
+          }
+
+          &.save-btn {
+            background-color: $main-color;
+            color: #fff;
+            border-radius: 3px;
+            font-weight: 600;
+          }
         }
       }
 
       .save {
         font-family: NotoSansKR, sans-serif;
         font-size: 1rem;
-        color: $sub-font-color;
         line-height: 1.4;
 
         &.save-thumb {
@@ -217,6 +243,19 @@
           overflow: hidden;
           border-radius: 50%;
           border: 1px solid $border-color;
+        }
+
+        .not-set {
+          color: $sub-font-color;
+        }
+
+        .tit {
+          display: block;
+          font-size: 0.937rem;
+          color: $font-color;
+          font-weight: 600;
+          line-height: 1.8;
+          margin-top: 15px;
         }
       }
 
@@ -336,6 +375,67 @@
             }
           }
         }
+
+        .sub-tit {
+          font-weight: 600;
+        }
+
+        .flex-between {
+          @include flex($just: space-between);
+        }
+
+        .on-off {
+          @include flex($just: flex-start);
+          font-weight: 400;
+
+          input[type="checkbox"] {
+            display: none;
+            &:checked + label {
+              background-color: $main-color;
+
+              span {
+                transform: translateX(15px);
+                box-shadow: -4px 0px 4px $dark-main-color;
+              }
+            }
+          }
+
+          label {
+            margin-left: 8px;
+            height: 20px;
+            width: 35px;
+            border-radius: 15px;
+            padding: 2px;
+            background-color: #797e8b;
+            transition: 0.2s ease;
+            display: inline-block;
+
+            span {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: #fff;
+              display: inline-block;
+              transition: 0.25s ease;
+              box-shadow: 4px 1px 4px rgba(92, 96, 107, 0.7);
+            }
+          }
+        }
+
+        .plus-btn {
+          @include flex($just: flex-start);
+          background-color: transparent;
+          color: $main-color;
+          font-weight: 600;
+          margin-top: 15px;
+          font-size: 0.937rem;
+
+          svg {
+            height: 10px;
+            fill: $main-color;
+            margin-right: 3px;
+          }
+        }
       }
     }
   }
@@ -410,7 +510,154 @@
 }
 
 // 가게정보 (영업정보)
+.store-wrap {
+  .cor-info {
+    .week-check {
+      @include flex($just: flex-start);
+      border: 1px solid #dde2e6;
+      position: relative;
+      border-radius: 3px;
+
+      &::before {
+        content: "";
+        width: 1px;
+        height: 100%;
+        background: #dde2e6;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+      }
+
+      input[type="radio"] {
+        display: none;
+
+        &:checked + label {
+          background-color: #f2f4f6;
+          font-weight: 600;
+        }
+      }
+
+      label {
+        display: block;
+        width: 50%;
+        cursor: pointer;
+        text-align: center;
+        height: 48px;
+        line-height: 48px;
+      }
+    }
+
+    .week {
+      margin-top: 15px;
+    }
+
+    .set-form-wrap {
+      margin-bottom: 30px;
+      .sub-tit {
+        border-bottom: 1px solid $border-color;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+      }
+      .explan {
+        padding: 15px 10px;
+        background-color: $bg-color;
+        margin-top: 10px;
+        color: $sub-font-color;
+        font-size: 0.832rem;
+      }
+
+      .setting-reaular {
+        @include flex($just: flex-start);
+
+        .select-wrap {
+          @include select-wrap;
+          margin-right: 10px;
+          flex: 1;
+          border-radius: 3px;
+          overflow: hidden;
+
+          &.mr0 {
+            margin-right: 0;
+          }
+        }
+
+        .delte-btn {
+          border: 1px solid $red-color;
+          color: $red-color;
+          border-radius: 3px;
+          background: transparent;
+          height: 48px;
+          padding: 0 15px;
+        }
+      }
+
+      .temp-form {
+        @include flex($just: space-between);
+        color: $sub-font-color;
+        input {
+          @include form_input;
+          width: 45%;
+        }
+      }
+    }
+  }
+}
 
 // 가게정보 (수거 및 배달정보)
+.delivery-wrap {
+  .cor-info {
+    .radio-wrap {
+      @include radio;
+    }
+
+    .set-form {
+      @include flex($just: space-between);
+
+      input {
+        @include form_input;
+        font-weight: 400;
+
+        &.area {
+          width: calc((100% - 75px) / 2);
+        }
+      }
+
+      .price {
+        // @include form_input;
+        @include flex();
+        padding: 0;
+        position: relative;
+        width: calc((100% - 75px) / 2);
+
+        input {
+          padding-right: 45px;
+        }
+
+        .kr {
+          position: absolute;
+          right: 0;
+          top: 0px;
+          padding: 0 15px;
+          height: 48px;
+          line-height: 48px;
+          font-size: 1.062rem;
+        }
+      }
+
+      .delete-btn {
+        border: 1px solid $red-color;
+        color: $red-color;
+        border-radius: 3px;
+        background: transparent;
+        height: 48px;
+        padding: 0 15px;
+      }
+    }
+
+    .add-btn {
+    }
+  }
+}
 
 //font-family: NotoSansKR, sans-serif;

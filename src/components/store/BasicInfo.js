@@ -36,10 +36,22 @@ export default function BasicInfo() {
                 onClick={() => {
                   setCorLogo(true);
                 }}
+                className="cor-btn"
               >
+                <i className="icon cor" />
                 변경
               </button>
-            ) : null}
+            ) : (
+              <button
+                type="button"
+                className="save-btn"
+                onClick={() => {
+                  setCorLogo(false);
+                }}
+              >
+                저장
+              </button>
+            )}
           </div>
           {corLogo !== true ? (
             <article className="save save-thumb">
@@ -62,16 +74,6 @@ export default function BasicInfo() {
                   <span>3mb 이하 jpg, jpeg, png 파일만 가능합니다.</span>
                 </div>
               </div>
-
-              <button
-                type="button"
-                className="save-btn"
-                onClick={() => {
-                  setCorLogo(false);
-                }}
-              >
-                저장
-              </button>
             </div>
           )}
         </div>
@@ -85,10 +87,22 @@ export default function BasicInfo() {
                 onClick={() => {
                   setCorStoreName(true);
                 }}
+                className="cor-btn"
               >
+                <i className="icon cor" />
                 변경
               </button>
-            ) : null}
+            ) : (
+              <button
+                type="button"
+                className="save-btn"
+                onClick={() => {
+                  setCorStoreName(false);
+                }}
+              >
+                저장
+              </button>
+            )}
           </div>
           {corstoreName !== true ? (
             <p className="save save-txt store-name">상길 세탁</p>
@@ -102,15 +116,6 @@ export default function BasicInfo() {
                   setStoreNameValue(e.target.value);
                 }}
               />
-              <button
-                type="button"
-                className="save-btn"
-                onClick={() => {
-                  setCorStoreName(false);
-                }}
-              >
-                저장
-              </button>
             </div>
           )}
         </div>
@@ -124,10 +129,22 @@ export default function BasicInfo() {
                 onClick={() => {
                   setCorTel(true);
                 }}
+                className="cor-btn"
               >
+                <i className="icon cor" />
                 변경
               </button>
-            ) : null}
+            ) : (
+              <button
+                type="button"
+                className="save-btn"
+                onClick={() => {
+                  setCorTel(false);
+                }}
+              >
+                저장
+              </button>
+            )}
           </div>
           {corTel !== true ? (
             <p className="save save-txt tel">070-1234-1234</p>
@@ -168,15 +185,6 @@ export default function BasicInfo() {
                   }}
                 />
               </div>
-              <button
-                type="button"
-                className="save-btn"
-                onClick={() => {
-                  setCorTel(false);
-                }}
-              >
-                저장
-              </button>
             </div>
           )}
         </div>
@@ -190,18 +198,22 @@ export default function BasicInfo() {
                 onClick={() => {
                   setCorIntro(true);
                 }}
+                className="cor-btn"
               >
+                <i className="icon cor" />
                 변경
               </button>
-            ) : null}
-            {/* <button
-              type="button"
-              onClick={() => {
-                setCorIntro(true);
-              }}
-            >
-              변경
-            </button> */}
+            ) : (
+              <button
+                type="button"
+                className="save-btn"
+                onClick={() => {
+                  setCorIntro(false);
+                }}
+              >
+                저장
+              </button>
+            )}
           </div>
           {corIntro === true ? (
             <div className={`cor-info cor-intro-wrap`}>
@@ -214,15 +226,6 @@ export default function BasicInfo() {
                 />
                 <span className="check-intro-num">{introValue.length}</span>
               </div>
-              <button
-                type="button"
-                className="save-btn"
-                onClick={() => {
-                  setCorIntro(false);
-                }}
-              >
-                저장
-              </button>
             </div>
           ) : (
             <div className="save save-intro">가게소개~~</div>
