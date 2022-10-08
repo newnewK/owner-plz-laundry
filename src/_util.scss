@@ -10,6 +10,8 @@ $sub-font-color: rgba($black-color, 0.54);
 $nav-color: #131622;
 $shadow-color: 2px 2px 10px rgba(0, 0, 0, 0.15);
 $required-color: #ff6666;
+$star-color: #fdb15c;
+$bg-color: #f9fafb;
 
 // reset
 a {
@@ -35,6 +37,14 @@ select {
 li {
   list-style: none;
 }
+textarea {
+  resize: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+// form
 @mixin form_input {
   border: 1px solid rgba($black-color, 0.15);
   padding: 0 10px;
@@ -142,7 +152,8 @@ h1 {
 }
 
 // font
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap");
 @font-face {
   font-family: "Pretendard-Regular";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
@@ -173,8 +184,8 @@ h1 {
     padding: $ptb 6.666%; // 80px
   }
 
-  @media screen and (max-width: 1000px) {
-    padding: $ptb 5%; // 50px
+  @media screen and (max-width: 1080px) {
+    padding: $ptb 4.629%; // 50px
   }
 
   @media screen and (max-width: 768px) {
@@ -269,6 +280,16 @@ h1 {
 // main
 @mixin main-wrap {
   padding: 40px;
+
+  & > .title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    padding-bottom: 40px;
+  }
+
+  @media screen and (max-width: 1080px) {
+    @include commonPadding($ptb: 40px);
+  }
 }
 
 // button
@@ -300,6 +321,18 @@ h1 {
   font-size: 1.062rem;
   letter-spacing: 1px;
   font-weight: 500;
+}
+
+@mixin cancelBtn {
+  margin-right: 10px;
+  border: 1px solid rgba($black-color, 0.1);
+  background-color: #fff;
+  color: $sub-font-color;
+
+  &:hover {
+    border-color: rgba($black-color, 0.3);
+    color: rgba($font-color, 0.75);
+  }
 }
 
 // radio
@@ -346,5 +379,32 @@ h1 {
         transition: 0.25s ease;
       }
     }
+  }
+}
+
+// select
+@mixin select-wrap {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  position: relative;
+  height: 48px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background: url("./icon/arrow_black.svg") no-repeat center center;
+    background-size: cover;
+  }
+
+  select {
+    border: none;
+    appearance: none;
+    width: 100%;
+    height: inherit;
+    padding: 0 10px;
   }
 }

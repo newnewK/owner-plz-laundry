@@ -1,0 +1,416 @@
+@import "./../util";
+
+.store-wrap {
+  @include main-wrap;
+}
+
+// 영업임시중지
+.temporary-wrap {
+  .title {
+    padding-bottom: 0;
+  }
+  .explanation {
+    color: $sub-font-color;
+    margin-top: 15px;
+    li {
+      line-height: 1.5;
+    }
+  }
+
+  .form-wrap {
+    width: 400px;
+    margin-top: 20px;
+
+    .field {
+      position: relative;
+      margin-bottom: 40px;
+
+      label {
+        display: block;
+        font-size: 1.062rem;
+      }
+
+      input {
+        margin-top: 15px;
+        @include form_input;
+      }
+
+      .timer {
+        @include flex($just: flex-start);
+        margin-top: 15px;
+
+        label {
+          color: $sub-font-color;
+          font-weight: 500;
+          font-size: 0.875rem;
+          margin-right: 20px;
+        }
+
+        .select-wrap {
+          @include select-wrap;
+          margin-right: 10px;
+          flex: 1;
+
+          &.mr0 {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    .submit-btn {
+      @include submitBtn;
+    }
+  }
+
+  .temporary-box {
+    margin-top: 30px;
+    width: 400px;
+
+    .tit {
+      @include flex($just: space-between);
+      font-size: 0.937rem;
+      color: $sub-font-color;
+
+      .cor-btn {
+        background: transparent;
+        color: $main-color;
+        font-size: 0.832rem;
+        text-decoration: underline;
+      }
+    }
+
+    .temp-info {
+      font-size: 0.937rem;
+      font-weight: 600;
+      padding-top: 20px;
+
+      .cont {
+        font-weight: 400;
+        padding-top: 10px;
+        color: $sub-font-color;
+        font-family: NotoSansKR, sans-serif;
+      }
+    }
+
+    .clear-btn {
+      @include submitBtn;
+      margin-top: 40px;
+      // width: 320px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .form-wrap {
+      width: 100%;
+
+      .submit-btn {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 70px;
+        font-size: 1.125rem;
+        border-radius: 0;
+      }
+    }
+    .temporary-box {
+      width: 100%;
+      .clear-btn {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 70px;
+        font-size: 1.125rem;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+// 가게정보
+.store-info-wrap {
+  .info-tab {
+    @include flex($just: flex-start);
+    border-bottom: 1px solid $border-color;
+
+    li {
+      padding: 5px 10px 0;
+      margin-right: 10px;
+      margin-left: 8px;
+
+      a {
+        font-size: 1rem;
+        color: $sub-font-color;
+        display: block;
+        padding-bottom: 10px;
+        letter-spacing: 0.5px;
+        background-color: transparent;
+      }
+
+      &.active {
+        a {
+          border-bottom: 2px solid $font-color;
+          color: $font-color;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .tab-info {
+    padding-top: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .info-tab {
+      position: relative;
+      border-bottom: none;
+
+      &::before {
+        content: "";
+        width: 100vw;
+        height: 1px;
+        background-color: $border-color;
+        position: absolute;
+        left: -20px;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+// 가게정보 (기본정보)
+.tab-info {
+  @include flex($just: space-between, $align: flex-start);
+  .container {
+    width: calc(100% - 500px);
+
+    .field {
+      margin-bottom: 20px;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 20px;
+      .title {
+        @include flex($just: space-between);
+        font-size: 1.062rem;
+        margin-bottom: 15px;
+
+        button {
+          background-color: transparent;
+          border-radius: 15px;
+          padding: 4px 15px;
+          font-size: 0.812rem;
+          border: 1px solid $main-color;
+          color: $main-color;
+        }
+      }
+
+      .save {
+        font-family: NotoSansKR, sans-serif;
+        font-size: 1rem;
+        color: $sub-font-color;
+        line-height: 1.4;
+
+        &.save-thumb {
+          width: 64px;
+          height: 64px;
+          overflow: hidden;
+          border-radius: 50%;
+          border: 1px solid $border-color;
+        }
+      }
+
+      .cor-info {
+        .save-btn {
+          background: $main-color;
+          color: #fff;
+          border-radius: 2px;
+          padding: 10px 40px;
+          transition: 0.25s ease;
+          font-weight: 500;
+          letter-spacing: 1px;
+          font-size: 0.937rem;
+          margin-top: 10px;
+          display: block;
+
+          &:hover {
+            background: $dark-main-color;
+          }
+        }
+
+        .cor-thumb {
+          @include flex($just: flex-start);
+          .upload-file {
+            .thumb {
+              width: 100px;
+              height: 100px;
+              overflow: hidden;
+              border-radius: 50%;
+              border: 1px solid $border-color;
+              margin-bottom: 10px;
+              cursor: pointer;
+            }
+
+            input {
+              display: none;
+            }
+          }
+          .cor-thumb-btn {
+            margin-left: 20px;
+            .upload-file-btn {
+              background-color: transparent;
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              border-radius: 3px;
+              display: block;
+              height: 30px;
+              padding: 0 30px;
+              margin-bottom: 8px;
+              color: $sub-font-color;
+              font-size: 0.937rem;
+              letter-spacing: 1px;
+            }
+
+            span {
+              color: $sub-font-color;
+              font-size: 0.812rem;
+              text-transform: uppercase;
+            }
+          }
+        }
+
+        .cor-txt-input {
+          @include form_input;
+        }
+
+        .cor-tel-wrap {
+          position: relative;
+          &::before {
+            content: "";
+            width: 6px;
+            height: 1px;
+            background-color: $sub-font-color;
+            position: absolute;
+            left: 128px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &::after {
+            content: "";
+            width: 6px;
+            height: 1px;
+            background-color: $sub-font-color;
+            position: absolute;
+            right: 128px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          input {
+            @include form_input;
+            width: calc((100% - 40px) / 3);
+            margin-right: 20px;
+
+            &[name="last-tel-number"] {
+              margin-right: 0;
+            }
+          }
+        }
+
+        &.cor-intro-wrap {
+          .cor-intro-txt {
+            position: relative;
+            height: 100%;
+
+            textarea {
+              @include form_input;
+              height: 100px;
+              padding: 10px;
+            }
+
+            .check-intro-num {
+              position: absolute;
+              right: 10px;
+              bottom: 10px;
+              color: rgba(0, 0, 0, 0.3);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .explanation-box {
+    width: 400px;
+    padding: 20px;
+    background-color: $bg-color;
+    box-sizing: border-box;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      padding-bottom: 10px;
+      line-height: 1.3;
+    }
+    span {
+      font-size: 0.875rem;
+      color: $sub-font-color;
+      line-height: 1.4;
+    }
+    @media screen and (max-width: 1200px) {
+      width: calc(100% - 430px);
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .container {
+      width: 400px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+
+    .container {
+      width: 100%;
+      .field {
+        .cor-info {
+          .cor-tel-wrap {
+            &::before {
+              left: 32%;
+            }
+            &::after {
+              right: 32%;
+            }
+          }
+        }
+      }
+    }
+
+    .explanation-box {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .container {
+      width: 100%;
+      .field {
+        .cor-info {
+          .cor-tel-wrap {
+            &::before {
+              left: 31%;
+            }
+            &::after {
+              right: 31%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 가게정보 (영업정보)
+
+// 가게정보 (수거 및 배달정보)
+
+//font-family: NotoSansKR, sans-serif;

@@ -10,6 +10,14 @@ import Header from "./common/Header";
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import Application from "./components/request/Application";
+import Review from "./components/review/Review";
+import ReviewCont from "./components/review/ReviewCont";
+import Notice from "./components/review/Notice";
+import TemporaryStop from "./components/store/TemporaryStop";
+import StoreInfomation from "./components/store/StoreInfomation";
+import DeliveryInfo from "./components/store/DeliveryInfo";
+import OperateInfo from "./components/store/OperateInfo";
+import BasicInfo from "./components/store/BasicInfo";
 
 function App() {
   let [login, setLogin] = useState(true);
@@ -46,6 +54,17 @@ function App() {
           <Route path="pw" element={<FindUserPw />} />
         </Route>
         <Route path="/application" element={<Application />} />
+        <Route path="/review" element={<Review />} />
+        <Route path="/review/id" element={<ReviewCont />} />
+        <Route path="/store_notice" element={<Notice />} />
+        <Route path="/temporary" element={<TemporaryStop />} />
+        <Route path="/store-info" element={<StoreInfomation />}>
+          <Route path="basic" element={<BasicInfo />} />
+          <Route path="operate" element={<OperateInfo />} />
+          <Route path="delivery" element={<DeliveryInfo />} />
+        </Route>
+
+        {/* <Route path="/" element={<StoreInfomation />} /> */}
       </Routes>
     </div>
   );

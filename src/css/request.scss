@@ -8,13 +8,14 @@
   .title {
     font-size: 1.875rem;
     font-weight: 700;
+    padding-bottom: 0;
   }
 
   .explanation {
     color: $sub-font-color;
-    margin-top: 10px;
+    margin-top: 15px;
     li {
-      padding: 5px 0;
+      line-height: 1.5;
     }
   }
 
@@ -190,7 +191,7 @@
       }
 
       .checked-list {
-        background-color: #f9fafb;
+        background-color: $bg-color;
         padding: 20px 10px;
         color: $sub-font-color;
         font-size: 0.875rem;
